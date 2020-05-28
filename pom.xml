@@ -17,9 +17,50 @@
 
 	<properties>
 		<java.version>11</java.version>
+                <maven.compiler.source>1.6</maven.compiler.source>
+                <maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.10</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.17</version>
+		</dependency>
+
+                <dependency>
+                        <groupId>io.github.bonigarcia</groupId>
+                        <artifactId>webdrivermanager</artifactId>
+                        <version>4.0.0</version>
+                </dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -48,6 +89,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+
+					<suiteXmlFiles>
+						<suiteXmlFile>XMLFiles/${xmlFiles}</suiteXmlFile>
+					</suiteXmlFiles>
+
+					<systemPropertyVariables>
+						<executionBrowser>${browser}</executionBrowser>
+						<appURL>${urlToBeTested}</appURL>
+					</systemPropertyVariables>
+
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
